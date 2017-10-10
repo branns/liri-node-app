@@ -34,6 +34,7 @@ var spotkey = new Spotify({
     spotify.search({ type: 'track', query: anotherCommand }, function (err, data) {
         if (err) {
             console.log('Error occurred: ' + err);
+            return;
         }
         console.log("Artist Name: " + data.tracks.items[0].artists[0].name);
         console.log("Song Name: " + data.tracks.items[0].name);
@@ -51,7 +52,7 @@ var req = require('request');
         console.log("\nIf you haven't watched 'Mr. Nobody,' then you should:<http://www.imdb.com/title/tt0485947/>")
         console.log("\n It's on Netflix!")
 	}
-var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece";
+var queryUrl = "http://www.omdbapi.com/?t=" + anotherCommand + "&y=&plot=short&apikey=40e9cece";
 
     request(queryUrl, function (error, response, body) {
         // If the request is successful (i.e. if the response status code is 200)
@@ -65,11 +66,7 @@ var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e
             console.log("\nActors: " + JSON.parse(body).Actors);
             console.log("\nTomatometer: " + JSON.parse(body).Ratings[1].Value);
             console.log("\nRT URL: " + JSON.parse(body).Website);
-        } else {
-        	console.log("Mr.Nobody")
-        	console.log("\nIf you haven't watched 'Mr. Nobody,' then you should:<http://www.imdb.com/title/tt0485947/>")
-        	console.log("\n It's on Netflix!")
-        }
+        } 
     });
 }
 }
@@ -77,18 +74,9 @@ var queryUrl = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e
 if (command === "my-tweets") {
 	twtr();
 } else if (command === "spotify-this-song") {
-	if (process.anotherCommand){
-
-	}
 		spotfy();
-	} else {
-		console.log(random.txt);
-	}
+	
 } else if (command === "movie-this") {
-	if (process.anotherCommand){
-
-	}
-}
 	omdbMovie();
 // write .txt file callback	
 } else if (command === "do-what-it-says") {
